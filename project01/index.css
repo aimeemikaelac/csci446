@@ -18,7 +18,6 @@ body {
 	height: 3.8em;
 }
 h1 {
-	#font-weight: bold;
 	margin-bottom: 0em;
 	margin-left: .2em;
 	padding-left: 0em;
@@ -34,11 +33,9 @@ h5 {
 	color: #7B848D;
 }
 a {
-	#background-color: black;
 	display: inline;
 	color: white;
 	font-size: 1em;
-	#font-weight: bold;
 	margin-left: .5em;
 	line-height: 2.4em;
 	margin-right: 1.5em;
@@ -101,8 +98,4 @@ label, #hid {
 }
 #submit_label {
 	color: white;
-}
-input, textarea{
-	#position: static;
-	#left: 17em;
 }
