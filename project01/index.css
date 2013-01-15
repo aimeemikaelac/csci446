@@ -99,3 +99,7 @@ label, #hid {
 #submit_label {
 	color: white;
 }
+textarea {
+	font-family: Arial, sans-serif;
+	font-size: .79em;
+}
