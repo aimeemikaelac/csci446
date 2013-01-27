@@ -1,4 +1,3 @@
-<!--Michael Coughlin 1/26/13-->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,16 +10,13 @@
 		</div>
 		<form id="musicForm" name="musicForm" action="/list" method="GET">
 			<label for="order">Sort By</label>
-			<select name="order">
+			<select name="order" id="order">
 				<option value="rank">Rank (default)</option>
 				<option value="name">Name</option>
 				<option value="year">Year</option>
 			</select>
 			<label for="rank">Select a Rank to Highlight</label>
-			<select name="rank">
-				<option name="1">1</option>
-				<option name="2">2</option>
-				<option name="3">3</option>
+			<select name="rank" id="rank">
 			</select>
 			<input type="submit" value="Display List"/>
 		</form>

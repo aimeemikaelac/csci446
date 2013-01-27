@@ -7,13 +7,29 @@ class TopAlbums
 	case request.path
 	when "/form" then send_form(request)
 	when "/list" then send_list(request)
+	when "/list.css" then serve_styling(request)
 	else unknown_request
 	end
   end
   
+  def serve_styling(request)
+	response=Rack::Response.new
+	File.open("list.css","rb"){ |css| response.write(css.read) }
+	response.finish
+  end
+  
   def send_form(request)
 	response=Rack::Response.new
-	File.open("form.html","rb"){ |form| response.write(form.read) }
+	#File.open("form.html","rb"){ |form| response.write(form.read) }
+	formArray=[]
+	formIndex=0
+	File.foreach('form.html'){ |line|
+		formArray[formIndex]=line
+		formIndex+=1
+	}
+	0.upto(18){ |i| response.write(formArray[i])	}
+	1.upto(100){ |num| response.write("<option value=\"#{num}\">#{num}</option>\n") }
+	19.upto(23){ |i| response.write(formArray[i]) }
 	response.finish
   end
   
@@ -31,7 +47,7 @@ class TopAlbums
 		htmlIndex+=1
 	}
 	sorting=getArray["order"]
-	rank=getArray["rank"]
+	rankToHighlight=Integer(getArray["rank"])
 	songsList=[]
 	rankIndex=0
 	File.foreach('top_100_albums.txt') { |line| 
@@ -46,10 +62,16 @@ class TopAlbums
 		response.write("<p>Sorted by Rank</p>")
 		response.write("<table>\n")
 		songsList.each do |line| 
-			response.write("<tr>\n")
 			rank=line[/\d+/]
 			year=line[/\d\d\d\d/]
 			song=line[/[^\d|\s].*[^\s]/]
+			rowString=""
+			if Integer(rank) == rankToHighlight
+				rowString="<tr id=\"highlight\">\n"
+			else
+				rowString="<tr>\n"
+			end
+			response.write(rowString)
 			response.write("<td>#{rank}</td>\n")
 			response.write("<td>#{song}</td>\n")
 			response.write("<td>#{year}</td>\n")
@@ -66,10 +88,17 @@ class TopAlbums
 		response.write("<p>Sorted by Name</p>")
 		response.write("<table>\n")
 		songsList.each do |line| 
-			response.write("<tr>\n")
 			rank=line[/\d+/]
 			year=line[/\d\d\d\d/]
 			song=line[/[^\d|\s].*[^\s]/]
+			
+			rowString=""
+			if Integer(rank) == rankToHighlight
+				rowString="<tr id=\"highlight\">\n"
+			else
+				rowString="<tr>\n"
+			end
+			response.write(rowString)
 			response.write("<td>#{rank}</td>\n")
 			response.write("<td>#{song}</td>\n")
 			response.write("<td>#{year}</td>\n")
@@ -86,10 +115,17 @@ class TopAlbums
 		response.write("<p>Sorted by Year</p>")
 		response.write("<table>\n")
 		songsList.each do |line| 
-			response.write("<tr>\n")
 			rank=line[/\d+/]
 			year=line[/\d\d\d\d/]
 			song=line[/[^\d|\s].*[^\s]/]
+			
+			rowString=""
+			if Integer(rank) == rankToHighlight
+				rowString="<tr id=\"highlight\">\n"
+			else
+				rowString="<tr>\n"
+			end
+			response.write(rowString)
 			response.write("<td>#{rank}</td>\n")
 			response.write("<td>#{song}</td>\n")
 			response.write("<td>#{year}</td>\n")
