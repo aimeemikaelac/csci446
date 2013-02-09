@@ -1,0 +1,17 @@
+<form action="/list" method="POST">
+	<label for="order">Sort By</label>
+	<select name="order">
+		<option value="rank">Rank (default)</option>
+		<option value="title">Title</option>
+		<option value="year">Year</option>
+	</select>
+	<label for="rank">Select a Rank to Highlight</label>
+	<select name="rank">
+		<% i = 1 %>
+		<% 100.times do %>
+			<option value=<%= i.to_s %>><%= i.to_s %></option>
+			<% i = i + 1 %>
+		<% end %>
+	</select>
+	<input type="submit" value="Display List">
+</form>

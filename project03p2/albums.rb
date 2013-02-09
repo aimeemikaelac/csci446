@@ -1,12 +1,18 @@
 ﻿#!/usr/bin/env ruby
 require 'sinatra'
 require 'data_mapper'
-require 'dm-sqlite-adapter'
 require_relative 'album'
 
-#DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/albums.sqlite3.db")
-DataMapper.setup(:default, 'sqlite:recall.db')
+DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/albums.sqlite3.db")
 set :port, 8080
-get "/" do
-	"Sinatra is working!"
+
+get "/form" do
+	erb :form, :layout => :header
+end
+
+post "/list" do
+	@sort_order = params['order']
+	@rank_to_highlight = params['rank'].to_i
+	@albums = Album.all(:order => [ (@sort_order.to_sym).asc ])
+	erb :list, :layout => :header	
 end

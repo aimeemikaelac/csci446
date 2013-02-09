@@ -1,0 +1,10 @@
+<p>Sorted by <%= @sort_order.capitalize %></p>
+<table>
+	<% @albums.each do |album| %>
+		<%= album.rank.to_i == @rank_to_highlight ? line = "<tr class=\"highlighted\">" : line = "<tr>" %>
+		<td><%= album.rank %></td>
+		<td><%= album.title %></td>
+		<td><%= album.year %></td>
+		</tr>
+	<% end %>
+</table>
