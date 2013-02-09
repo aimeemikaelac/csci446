@@ -1,0 +1,16 @@
+	<body>
+		<h1>Rolling Stone's Top 100 Albums of All Time</h1>
+		<p>Sorted by <%= sort_order.capitalize %></p>
+		<table>
+			<% albums.each do |album| %>
+				<% line = "" %>
+				<% album[3] == rank_to_highlight ? line = "<tr class=\"highlighted\">" : line = "<tr>" %>
+				<%= line %>
+				<td><%= album[3] %></td>
+				<td><%= album[1] %></td>
+				<td><%= album[2] %></td>
+				</tr>
+			<% end %>
+		</table>
+	</body>
+</html>
