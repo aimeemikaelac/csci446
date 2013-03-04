@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag	 	"scaffold" %>
   <%= stylesheet_link_tag		"depot", :media => "all" %>
   <% javascript_include_tag 	"application" %>
-  <%= javascript_include_tag	:defaults %>
+  <% javascript_include_tag	:defaults %>
   <%= csrf_meta_tags %>
 </head>
 <body id="store">
@@ -19,6 +19,7 @@
 			<a href="http://www.../faq">Questions</a><br />
 			<a href="http://www.../news">News</a><br />
 			<a href="http://www.../contact">Contact</a><br />
+			<em><%= Time.now %></em>
 		</div>
 		<div id="main">
 			<%= yield %>
