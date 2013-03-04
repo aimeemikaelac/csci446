@@ -19,7 +19,7 @@ require 'test_helper'
 class ProductTest < ActiveSupport::TestCase
 	fixtures :products
 	#...
-  test "product attributes must not be empty" do
+  test "product must not have empty attributes" do
     product = Product.new
     assert product.invalid?
     assert product.errors[:title].any?
@@ -28,7 +28,7 @@ class ProductTest < ActiveSupport::TestCase
     assert product.errors[:image_url].any?
   end
 
-  test "product price must be positive" do
+  test "product price must be greater than zero" do
     product = Product.new(:title       => "My Book Title",
                           :description => "yyy",
                           :image_url   => "zzz.jpg")
