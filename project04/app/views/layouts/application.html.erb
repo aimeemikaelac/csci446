@@ -15,7 +15,8 @@
 	</div>
 	<div id="columns">
 		<div id="side">
-			<% if session[:counter] >= 5%>
+			<% boolResult = session[:counter].nil? == false && session[:counter] >= 5 %>
+			<% if boolResult %>
 				<em>Number of accesses: <%= session[:counter] %></em><br />
 			<% end %>
 			<a href="http://www....">Home</a><br />
