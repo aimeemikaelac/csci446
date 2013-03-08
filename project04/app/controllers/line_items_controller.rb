@@ -57,6 +57,7 @@ class LineItemsController < ApplicationController
           :status => :unprocessable_entity }
       end
     end
+	session[:counter]=0;
   end
 
   # PUT /line_items/1

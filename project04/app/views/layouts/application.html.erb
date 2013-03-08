@@ -15,6 +15,9 @@
 	</div>
 	<div id="columns">
 		<div id="side">
+			<% if session[:counter] >= 5%>
+				<em>Number of accesses: <%= session[:counter] %></em><br />
+			<% end %>
 			<a href="http://www....">Home</a><br />
 			<a href="http://www..../faq">Questions</a><br />
 			<a href="http://www..../news">News</a><br />
